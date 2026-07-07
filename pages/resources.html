@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Resources - Biodiversity Hall of Fame (BHOF)</title>
+  <meta name="description" content="Access guides, documentation, and tools to integrate Biodiversity Halls of Fame in your school.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/bhof_logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header / Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="logo-wrapper">
+          <img src="../assets/bhof_logo.png" alt="BHOF Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <span>Biodiversity Hall of Fame</span>
+      </a>
+      
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="nav-menu">
+        <a href="../index.html">About BHOFs</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="criteria.html">Induction Criteria</a>
+        <a href="resources.html" class="active">Resources</a>
+        <a href="bioblitz.html">Bioblitzes</a>
+        <a href="contributors.html">Contributors</a>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px;">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section Header -->
+    <section style="padding-bottom: 2rem; background: radial-gradient(circle at top right, var(--color-accent-light), transparent 50%);">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2>BHOF Resources</h2>
+        <p>A collection of guides and tools designed for teachers, researchers, clubs, and students wishing to set up a Biodiversity Hall of Fame.</p>
+      </div>
+    </section>
+
+    <!-- Resources Cards Grid -->
+    <section style="padding-top: 2rem;">
+      <div class="grid" id="resources-grid">
+        <!-- Dynamic Resource Cards Rendered via app.js -->
+      </div>
+    </section>
+
+    <!-- Community Callout -->
+    <section style="background-color: var(--bg-secondary); max-width: 100%; text-align: center; padding: 4rem 2rem; transition: var(--transition-smooth);">
+      <div style="max-width: 700px; margin: 0 auto;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 1rem;">Need customized materials?</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+          We are currently building partnerships with local ecoregions to develop specific localized field guides and school leaderboard formats. If you want custom material for your district, get in touch below.
+        </p>
+        <a href="#contact" class="btn btn-primary">Request Custom Kit</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer / Collaboration -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h2>Let's Collaborate</h2>
+        <p id="contact-text">Loading contact information...</p>
+        <a id="contact-mail" href="#" class="btn btn-primary">Contact Collaboration Team</a>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Biodiversity Hall of Fame. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <img src="../assets/inat_logo_icon.png" alt="iNaturalist Logo" style="width: 18px; height: 18px; object-fit: contain;">
+            <span>iNaturalist</span>
+          </a>
+          <a href="../index.html">About</a>
+          <a href="resources.html">Resources</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/content.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

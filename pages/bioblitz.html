@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosted Bioblitzes - Biodiversity Hall of Fame (BHOF)</title>
+  <meta name="description" content="View upcoming and past regional bioblitz events hosted by the Biodiversity Hall of Fame.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/bhof_logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header / Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="logo-wrapper">
+          <img src="../assets/bhof_logo.png" alt="BHOF Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <span>Biodiversity Hall of Fame</span>
+      </a>
+      
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="nav-menu">
+        <a href="../index.html">About BHOFs</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="criteria.html">Induction Criteria</a>
+        <a href="resources.html">Resources</a>
+        <a href="bioblitz.html" class="active">Bioblitzes</a>
+        <a href="contributors.html">Contributors</a>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px;">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section Header -->
+    <section style="padding-bottom: 2rem; background: radial-gradient(circle at top right, var(--color-primary-light), transparent 50%);">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2>Hosted Bioblitz Events</h2>
+        <p>Participate in active and seasonal bioblitzes in your region to earn research-grade observations and BHOF points.</p>
+      </div>
+    </section>
+
+    <!-- Bioblitz events grid -->
+    <section style="padding-top: 2rem; padding-bottom: 4rem;">
+      <div class="grid" id="bioblitz-grid">
+        <!-- Dynamic Bioblitz Cards Rendered via app.js -->
+      </div>
+    </section>
+
+    <!-- Future Interactive Workspace (Full Width Container) -->
+    <section style="background-color: var(--bg-secondary); max-width: 100%; transition: var(--transition-smooth);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+          <h2>Interactive Mapping & Data Viz</h2>
+          <p>Once deployed, this space will host dynamic widgets linked directly to iNaturalist APIs for real-time tracking.</p>
+        </div>
+        
+        <div class="interactive-map-placeholder" style="padding: 6rem 2rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 80px; height: 80px;">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+            <line x1="8" y1="2" x2="8" y2="18"></line>
+            <line x1="16" y1="6" x2="16" y2="22"></line>
+          </svg>
+          <h3 style="font-size: 1.5rem; margin-top: 1rem;">Ecoregional Leaderboards Workspace</h3>
+          <p style="color: var(--text-secondary); max-width: 500px; font-size: 1rem;">
+            This section will contain interactive leaflet maps showing research-grade observations in the South-Central Plains region alongside active school league standings.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer / Collaboration -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h2>Let's Collaborate</h2>
+        <p id="contact-text">Loading contact information...</p>
+        <a id="contact-mail" href="#" class="btn btn-primary">Contact Collaboration Team</a>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Biodiversity Hall of Fame. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <img src="../assets/inat_logo_icon.png" alt="iNaturalist Logo" style="width: 18px; height: 18px; object-fit: contain;">
+            <span>iNaturalist</span>
+          </a>
+          <a href="../index.html">About</a>
+          <a href="resources.html">Resources</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/content.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

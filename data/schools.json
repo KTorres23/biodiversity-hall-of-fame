@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Southern Illinois University",
+    "level": "University",
+    "city": "Carbondale, IL",
+    "lat": 37.7126,
+    "lng": -89.2198,
+    "projectUrl": "https://www.inaturalist.org/projects/siu-biodiversity-hall-of-fame"
+  },
+  {
+    "name": "University of Illinois Urbana-Champaign",
+    "level": "University",
+    "city": "Champaign, IL",
+    "lat": 40.1020,
+    "lng": -88.2272,
+    "projectUrl": "#"
+  },
+  {
+    "name": "Carbondale Community High School",
+    "level": "High School",
+    "city": "Carbondale, IL",
+    "lat": 37.7292,
+    "lng": -89.2431,
+    "projectUrl": "#"
+  },
+  {
+    "name": "Murphysboro High School",
+    "level": "High School",
+    "city": "Murphysboro, IL",
+    "lat": 37.7656,
+    "lng": -89.3362,
+    "projectUrl": "#"
+  }
+]
