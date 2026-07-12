@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting Started - Biodiversity Hall of Fame (BHOF)</title>
-  <meta name="description" content="A guided guide to starting your journey in the Biodiversity Hall of Fame, whether you are a student, teacher, researcher, or organizer.">
-  
+  <meta name="description"
+    content="A guide to starting your journey in the Biodiversity Hall of Fame, whether you are a student, teacher, researcher, or organizer.">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/bhof_logo.png">
-  
+
   <!-- LeafletJS (Map) Stylesheet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
   <!-- Dynamic Header / Navigation -->
@@ -26,7 +30,7 @@
         </div>
         <span>Biodiversity Hall of Fame</span>
       </a>
-      
+
       <button id="menu-toggle" class="menu-toggle" aria-label="Open Navigation Menu">
         <span></span>
         <span></span>
@@ -39,9 +43,11 @@
         <a href="criteria.html">Induction Criteria</a>
         <a href="resources.html">Resources</a>
         <a href="bioblitz.html">Bioblitzes</a>
+        <a href="leaderboard.html">Leaderboards</a>
         <a href="contributors.html">Contributors</a>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width:20px; height:20px;">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
           </svg>
         </button>
@@ -51,10 +57,11 @@
 
   <main>
     <!-- Section Header -->
-    <section style="padding-bottom: 2rem; background: radial-gradient(circle at top right, var(--color-primary-light), transparent 50%);">
+    <section
+      style="padding-bottom: 2rem; background: radial-gradient(circle at top right, var(--color-primary-light), transparent 50%);">
       <div class="section-header" style="margin-bottom: 0;">
         <h2>Getting Started</h2>
-        <p>Select your track and role below to unlock your custom onboarding path and discover relevant project tools.</p>
+        <p>Select your track and role below to discover relevant information and resources.</p>
       </div>
     </section>
 
@@ -63,88 +70,141 @@
       <!-- Toggle Selectors Container -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem; margin-bottom: 3rem;">
         <!-- Level Switcher -->
-        <div class="toggle-group" style="display: inline-flex; background: var(--bg-secondary); padding: 0.35rem; border-radius: var(--border-radius-full); border: 1px solid var(--color-border);">
-          <button id="tab-level-hs" class="tab-btn active" style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">High School</button>
-          <button id="tab-level-univ" class="tab-btn" style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">College / University</button>
+        <div class="toggle-group"
+          style="display: inline-flex; background: var(--bg-secondary); padding: 0.35rem; border-radius: var(--border-radius-full); border: 1px solid var(--color-border);">
+          <button id="tab-level-hs" class="tab-btn active"
+            style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">High
+            School</button>
+          <button id="tab-level-univ" class="tab-btn"
+            style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">College
+            / University</button>
         </div>
-        
+
         <!-- Role Switcher -->
-        <div class="toggle-group" style="display: inline-flex; background: var(--bg-secondary); padding: 0.35rem; border-radius: var(--border-radius-full); border: 1px solid var(--color-border);">
-          <button id="tab-role-student" class="tab-btn active" style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">Student</button>
-          <button id="tab-role-educator" class="tab-btn" style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">Educator / Advisor</button>
+        <div class="toggle-group"
+          style="display: inline-flex; background: var(--bg-secondary); padding: 0.35rem; border-radius: var(--border-radius-full); border: 1px solid var(--color-border);">
+          <button id="tab-role-student" class="tab-btn active"
+            style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">Student</button>
+          <button id="tab-role-educator" class="tab-btn"
+            style="border: none; outline: none; background: transparent; padding: 0.6rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-radius: var(--border-radius-full); cursor: pointer; color: var(--text-secondary); transition: var(--transition-smooth);">Educator
+            / Advisor</button>
         </div>
       </div>
 
       <!-- Tab Content Area -->
       <div style="max-width: 900px; margin: 0 auto;">
-        
+
         <!-- HS Student Card -->
-        <div id="content-hs-student" class="onboarding-panel active card" style="border-top: 5px solid var(--color-primary);">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+        <div id="content-hs-student" class="onboarding-panel active card"
+          style="border-top: 5px solid var(--color-primary);">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg></div>
           <h3>🎒 High School Student Pathway</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Learn about nature in your area, join a student conservation community, and work toward local or state BHOF induction.</p>
-          <ul style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
-            <li>Download <strong>iNaturalist</strong> and create an account. Ask your teacher or parent if you need help with setup.</li>
-            <li>Join your school's **Biodiversity Club** or active class project workspace.</li>
-            <li>Explore nearby parks or school grounds to submit observations. Remember to only document **wild** species.</li>
-            <li>Strive for **100 unique Research-Grade observations** across taxonomic groups (Plants, Birds, Bugs, etc.) to qualify for induction.</li>
-            <li>Find other active high schools on the map below to see what species they are finding!</li>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Learn about nature in your area, join a
+            student conservation community, and work toward local or state BHOF induction.</p>
+          <ul
+            style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
+            <li>Download <a href="https://www.inaturalist.org" target="_blank"
+                rel="noopener noreferrer"><strong>iNaturalist</strong></a> and create an account. Ask your teacher or
+              parent if you need help
+              with setup.</li>
+            <li>Join your school's <b>Biodiversity Club</b> or active class project.</li>
+            <li>Explore nearby parks or school grounds to submit observations. Remember to only document <b>wild</b>
+              species.</li>
+            <li>Strive for <b>100 unique Research-Grade observations</b> across taxonomic groups (Plants, Birds, Bugs,
+              etc.) to qualify for induction.</li>
           </ul>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="criteria.html" class="btn btn-primary">Check Induction Rules</a>
+            <a href="criteria.html" class="btn btn-primary">Check Induction Criteria</a>
             <a href="resources.html" class="btn btn-secondary">Get iNaturalist Guide</a>
           </div>
         </div>
 
         <!-- HS Educator Card -->
-        <div id="content-hs-educator" class="onboarding-panel card" style="border-top: 5px solid var(--color-primary); display: none;">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <div id="content-hs-educator" class="onboarding-panel card"
+          style="border-top: 5px solid var(--color-primary); display: none;">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg></div>
           <h3>🏫 High School Educator Pathway</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Bring field biology to life in your classroom. Set up healthy competitions to motivate student research.</p>
-          <ul style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
-            <li>Download the **School Integration Kit** for templates on lesson plans and syllabi.</li>
-            <li>Set up an iNaturalist **Project** for your specific high school district.</li>
-            <li>Start a student-led **Biodiversity Club** to host local practice bioblitzes.</li>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Bring field biology to life in your classroom.
+            Set up healthy competitions to motivate student education in biodiversity conservation.</p>
+          <ul
+            style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
+            <li>Download the <a href="https://www.citynaturechallenge.org/education-toolkit" target="_blank"
+                rel="noopener noreferrer"><b>City Nature Challenge Education Toolkit</b></a> for templates on lesson
+              plans and syllabi.</li>
+            <li>Set up an iNaturalist <a href="https://www.inaturalist.org/projects" class="">Project</a> for your
+              school.</li>
+            <li>Start a student-led <b>Biodiversity Club</b> to host bioblitzes.</li>
             <li>Encourage students to collaborate on identifications to raise observations to "Research-Grade".</li>
             <li>Coordinate with neighboring schools to establish inter-school leaderboard cups.</li>
           </ul>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="resources.html" class="btn btn-primary">Download Integration Kit</a>
-            <a href="#contact" class="btn btn-secondary">Contact for Support</a>
+            <a href="https://www.citynaturechallenge.org/education-toolkit" target="_blank" rel="noopener noreferrer"
+              class="btn btn-primary">Get Education Toolkit</a>
+            <a href="contributors.html" class="btn btn-secondary">Contact for Support</a>
           </div>
         </div>
 
         <!-- Univ Student Card -->
-        <div id="content-univ-student" class="onboarding-panel card" style="border-top: 5px solid var(--color-secondary); display: none;">
-          <div class="card-icon" style="background-color: rgba(21, 101, 192, 0.1); color: var(--color-secondary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg></div>
+        <div id="content-univ-student" class="onboarding-panel card"
+          style="border-top: 5px solid var(--color-secondary); display: none;">
+          <div class="card-icon" style="background-color: rgba(21, 101, 192, 0.1); color: var(--color-secondary);"><svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg></div>
           <h3>🎓 University Student Pathway</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Engage in high-value citizen science, support regional ecoregion mapping, and compete for collegiate BHOF recognition.</p>
-          <ul style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
-            <li>Create an iNaturalist account and link it to your college or university's BHOF network page.</li>
-            <li>Learn to annotate observations (life stage, phenology, sex) to add value for professional researchers.</li>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Engage in high-value citizen science, support
+            regional ecoregion mapping, and compete for collegiate BHOF recognition.</p>
+          <ul
+            style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
+            <li>Create an <a href="https://www.inaturalist.org" target="_blank"
+                rel="noopener noreferrer"><strong>iNaturalist</strong></a> account and link it to your college or
+              university's BHOF network page.</li>
+            <li>Learn to <a href="https://www.inaturalist.org/pages/annotations" target="_blank"
+                rel="noopener noreferrer">annotate observations</a> (life stage, phenology, sex) to add value for
+              professional researchers.
+            </li>
             <li>Help identify other users' uploads to help build community consensus (Research-Grade status).</li>
-            <li>Check the network map below to connect with other active campus groups and share local collections data.</li>
           </ul>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="criteria.html" class="btn btn-primary">Check Induction Quotas</a>
-            <a href="resources.html" class="btn btn-secondary">Download Annotation Guide</a>
+            <a href="criteria.html" class="btn btn-primary">Check Induction Criteria</a>
+            <a href="#network-map" class="btn btn-secondary">Connect with other campuses</a>
           </div>
         </div>
 
         <!-- Univ Educator Card -->
-        <div id="content-univ-educator" class="onboarding-panel card" style="border-top: 5px solid var(--color-secondary); display: none;">
-          <div class="card-icon" style="background-color: rgba(21, 101, 192, 0.1); color: var(--color-secondary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+        <div id="content-univ-educator" class="onboarding-panel card"
+          style="border-top: 5px solid var(--color-secondary); display: none;">
+          <div class="card-icon" style="background-color: rgba(21, 101, 192, 0.1); color: var(--color-secondary);"><svg
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg></div>
           <h3>🏛️ University Faculty & Advisor Pathway</h3>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Incorporate citizen science datasets into your ecology or conservation courses. Form campus biodiversity clubs.</p>
-          <ul style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
-            <li>Integrate BHOF criteria directly into field biology courses or lab requirements.</li>
-            <li>Establish an iNaturalist **Umbrella Project** to track all observations within your university properties.</li>
-            <li>Co-advise the campus **Biodiversity Club** and help connect students to local land managers.</li>
-            <li>Connect with other universities in the BHOF network map below to establish collaborative research collections or cooperative projects.</li>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Incorporate citizen science datasets into your
+            ecology or biology courses. Form campus biodiversity clubs.</p>
+          <ul
+            style="padding-left: 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary);">
+            <li>Use the <a href="https://www.citynaturechallenge.org/education-toolkit" target="_blank"
+                rel="noopener noreferrer"><b>City Nature Challenge Education Toolkit</b></a> to integrate iNaturalist
+              directly into field biology courses or lab requirements.</li>
+            <li>Establish an iNaturalist <b>Umbrella Project</b> to track all observations within your university
+              properties.</li>
+            <li>Co-advise the campus <b>Biodiversity Club</b> and help connect students to local land managers.</li>
+            <li>Connect with other universities in the BHOF network map below to establish collaborative research
+              collections or cooperative projects.</li>
           </ul>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="resources.html" class="btn btn-primary">Get University Syllabus Kit</a>
-            <a href="#contact" class="btn btn-secondary">Invite Collaborative Projects</a>
+            <a href="https://www.citynaturechallenge.org/education-toolkit" target="_blank" rel="noopener noreferrer"
+              class="btn btn-primary">Get Education Toolkit</a>
+            <a href="contributors.html" class="btn btn-secondary">Invite Collaborative Projects</a>
           </div>
         </div>
 
@@ -152,9 +212,10 @@
     </section>
 
     <!-- Side Tracks: Researchers & Organizers -->
-    <section id="side-tracks" style="border-top: 1px solid var(--color-border); background-color: var(--bg-secondary); max-width: 100%; transition: var(--transition-smooth);">
+    <section id="side-tracks"
+      style="border-top: 1px solid var(--color-border); background-color: var(--bg-secondary); max-width: 100%; transition: var(--transition-smooth);">
       <div style="max-width: 1200px; margin: 0 auto;" class="grid">
-        
+
         <!-- Researchers Card -->
         <div class="card" style="background: var(--bg-primary);">
           <div class="card-icon" style="background-color: var(--color-accent-light); color: var(--color-accent);">
@@ -166,13 +227,14 @@
             </svg>
           </div>
           <h3>🔍 For Researchers</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Leverage student-generated, research-grade datasets to support biodiversity studies, evolutionary ecology, and regional baseline audits.</p>
-          <ul style="padding-left: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
-            <li>Query high-quality species occurrences mapped by local ecoregions.</li>
-            <li>Identify baseline data points for species of Greatest Conservation Need.</li>
-            <li>Use students as active field collectors for targeted bioblitz datasets.</li>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Leverage student-generated, research-grade
+            datasets to support biodiversity studies.</p>
+          <ul
+            style="padding-left: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+            <li>Collaborate with the BHOF team to request access to obscured or private observation coordinates on a
+              case-by-case basis.</li>
           </ul>
-          <a href="resources.html" class="card-link">Access API Query Guide</a>
+          <a href="contributors.html" class="card-link">Contact for Data Access</a>
         </div>
 
         <!-- Organizers Card -->
@@ -185,32 +247,75 @@
             </svg>
           </div>
           <h3>🌲 For Organizers</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Coordinate district, ecoregional, or statewide bioblitz events to engage school systems and compile vital regional species catalogues.</p>
-          <ul style="padding-left: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Coordinate district, ecoregional, or statewide
+            bioblitz events to engage school systems.</p>
+          <ul
+            style="padding-left: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
             <li>Design and register cooperative bioblitz events on iNaturalist.</li>
-            <li>Promote conservation frameworks (e.g. Bee City USA, Bee Campus).</li>
             <li>Establish Baseline projects for ecoregion-level tracking.</li>
+            <li>Create regional leaderboards that align with BHOF tiers and jurisdictions.</li>
           </ul>
           <a href="bioblitz.html" class="card-link">See Active Events</a>
+        </div>
+
+        <!-- Others Card -->
+        <div class="card" style="background: var(--bg-primary);">
+          <div class="card-icon" style="background-color: var(--color-primary-light); color: var(--color-primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>🤝 For Others</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Not a student or educator, but want to know
+            how you can help BHOF? Join us to support school outreach and build out our program infrastructure.</p>
+          <ul
+            style="padding-left: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+            <li>Help build out local BHOF web and database infrastructure.</li>
+            <li>Coordinate outreach and promote the program to regional schools.</li>
+            <li>Provide mentorship, resources, or support to student biodiversity clubs.</li>
+          </ul>
+          <a href="contributors.html" class="card-link">Learn How to Help</a>
         </div>
 
       </div>
     </section>
 
     <!-- Interactive Network Map Section -->
-    <section style="border-top: 1px solid var(--color-border);">
+    <section id="network-map" style="border-top: 1px solid var(--color-border);">
       <div class="section-header">
         <h2>BHOF Network Map</h2>
-        <p>Discover participating high schools, colleges, and universities across the region. Click on markers to view active projects and see who is involved!</p>
+        <p>Discover participating high schools, colleges, and universities across the region. Click on markers to view
+          active projects and see who is involved!</p>
       </div>
-      
+
+      <!-- Pilot Disclaimer Callout -->
+      <div
+        style="max-width: 900px; margin: 0 auto 1.5rem; background-color: var(--color-accent-light); border: 1px dashed var(--color-accent); border-radius: var(--border-radius-md); padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+        <span style="font-size: 1.3rem;">⚠️</span>
+        <div>
+          <strong style="color: var(--text-primary); font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">Pilot
+            Phase Notice</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+            This map and participating institutions list currently display placeholder data. The Biodiversity Hall of
+            Fame has not officially piloted yet, and live schools and projects will populate once pilot programs begin.
+          </p>
+        </div>
+      </div>
+
       <!-- Leaflet Map Container -->
-      <div id="map" style="height: 480px; width: 100%; border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-md); z-index: 10; margin-bottom: 2rem;"></div>
+      <div id="map"
+        style="height: 480px; width: 100%; border-radius: var(--border-radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-md); z-index: 10; margin-bottom: 2rem;">
+      </div>
 
       <!-- Accessible Schools list -->
-      <div style="max-width: 900px; margin: 0 auto; background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--border-radius-md); border: 1px solid var(--color-border);">
+      <div
+        style="max-width: 900px; margin: 0 auto; background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--border-radius-md); border: 1px solid var(--color-border);">
         <h4 style="font-family: var(--font-heading); margin-bottom: 0.75rem;">Participating Institutions</h4>
-        <div id="school-list-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+        <div id="school-list-container"
+          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
           <!-- Loaded dynamically via app.js -->
           <p style="color: var(--text-muted);">Loading active BHOF network schools...</p>
         </div>
@@ -226,12 +331,14 @@
         <p id="contact-text">Loading contact information...</p>
         <a id="contact-mail" href="#" class="btn btn-primary">Contact Collaboration Team</a>
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; 2026 Biodiversity Hall of Fame. All rights reserved.</p>
         <div class="footer-links">
-          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem;">
-            <img src="../assets/inat_logo_icon.png" alt="iNaturalist Logo" style="width: 18px; height: 18px; object-fit: contain;">
+          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer"
+            style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <img src="../assets/inat_logo_icon.png" alt="iNaturalist Logo"
+              style="width: 18px; height: 18px; object-fit: contain;">
             <span>iNaturalist</span>
           </a>
           <a href="../index.html">About</a>
@@ -242,10 +349,12 @@
   </footer>
 
   <!-- LeafletJS Map scripts -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- Content & App Scripts -->
   <script src="../js/content.js"></script>
   <script src="../js/app.js"></script>
 </body>
+
 </html>

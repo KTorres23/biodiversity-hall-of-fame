@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Responsive Mobile Menu Drawer
   initMobileMenu();
+
+  // 6. Initialize Leaderboard dynamic content
+  initLeaderboard();
+
+  // 7. Initialize Floating Pilot Banner
+  initPilotBanner();
 });
 
 function initTheme() {
@@ -83,7 +89,7 @@ function loadDynamicContent() {
         <div class="card">
           <div class="card-icon">${iconSvg}</div>
           <h3>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(item.description)}</p>
+          <p>${item.description}</p>
         </div>
       `;
     }).join('');
@@ -120,11 +126,17 @@ function loadDynamicContent() {
     }).join('');
   }
 
-  // --- Load Benefits List ---
-  const benefitsList = document.getElementById('benefits-list');
-  if (benefitsList && data.benefits) {
-    benefitsList.innerHTML = data.benefits.map(benefit => `
-      <li>${escapeHtml(benefit)}</li>
+  // --- Load Mission Statement ---
+  const missionStatementText = document.getElementById('mission-statement-text');
+  if (missionStatementText && data.missionStatement) {
+    missionStatementText.textContent = data.missionStatement;
+  }
+
+  // --- Load Goals List ---
+  const goalsList = document.getElementById('goals-list');
+  if (goalsList && data.goals) {
+    goalsList.innerHTML = data.goals.map((goal, index) => `
+      <li><strong>Goal ${index + 1}:</strong> ${escapeHtml(goal)}</li>
     `).join('');
   }
 
@@ -328,8 +340,8 @@ function initNetworkMap() {
   const mapElement = document.getElementById('map');
   if (!mapElement) return;
 
-  // Initialize Map centered on Southern Illinois area (middle of mock coords)
-  const map = L.map('map').setView([38.5, -89.0], 6);
+  // Initialize Map centered on the USA
+  const map = L.map('map').setView([39.8283, -98.5795], 4);
 
   // Add OpenStreetMap tile layer (supporting dark/light layers depending on active theme is a super premium wow touch!)
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -446,4 +458,222 @@ function initMobileMenu() {
       document.body.classList.remove('menu-open');
     }
   });
+}
+
+function initLeaderboard() {
+  const tabInd = document.getElementById('tab-leaderboard-ind');
+  const tabSchool = document.getElementById('tab-leaderboard-school');
+  const tableHead = document.querySelector('#leaderboard-table thead');
+  const tableBody = document.getElementById('leaderboard-body');
+  const filterLevel = document.getElementById('filter-level');
+
+  if (!tableBody || !window.BHOF_CONTENT || !window.BHOF_CONTENT.leaderboards) return;
+
+  let currentTab = 'ind'; // 'ind' or 'school'
+  let currentFilter = 'all';
+
+  function render() {
+    const data = window.BHOF_CONTENT.leaderboards;
+    let html = '';
+    let headerHtml = '';
+
+    if (currentTab === 'ind') {
+      headerHtml = `
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>School</th>
+          <th>Level</th>
+          <th>Research-Grade Obs</th>
+          <th>Unique Species</th>
+          <th>Badge</th>
+        </tr>
+      `;
+      
+      const filteredInd = data.individuals.filter(item => {
+        return currentFilter === 'all' || item.level === currentFilter;
+      });
+
+      html = filteredInd.map((item, index) => {
+        const rank = index + 1;
+        let rankClass = '';
+        if (rank === 1) rankClass = 'rank-1';
+        else if (rank === 2) rankClass = 'rank-2';
+        else if (rank === 3) rankClass = 'rank-3';
+
+        let badgeClass = 'badge-active';
+        if (item.badge.includes('Gold')) badgeClass = 'badge-gold';
+        else if (item.badge.includes('Silver')) badgeClass = 'badge-silver';
+        else if (item.badge.includes('Bronze')) badgeClass = 'badge-bronze';
+
+        return `
+          <tr>
+            <td class="rank-cell"><span class="rank-badge ${rankClass}">${rank}</span></td>
+            <td><strong>${escapeHtml(item.name)}</strong></td>
+            <td>${escapeHtml(item.school)}</td>
+            <td>${escapeHtml(item.level)}</td>
+            <td>${item.observations}</td>
+            <td>${item.species}</td>
+            <td><span class="badge-tag ${badgeClass}">${escapeHtml(item.badge)}</span></td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      headerHtml = `
+        <tr>
+          <th>Rank</th>
+          <th>School Name</th>
+          <th>Level</th>
+          <th>Total Observations</th>
+          <th>Unique Species</th>
+          <th>Active Students</th>
+        </tr>
+      `;
+
+      const filteredSchools = data.schools.filter(item => {
+        return currentFilter === 'all' || item.level === currentFilter;
+      });
+
+      html = filteredSchools.map((item, index) => {
+        const rank = index + 1;
+        let rankClass = '';
+        if (rank === 1) rankClass = 'rank-1';
+        else if (rank === 2) rankClass = 'rank-2';
+        else if (rank === 3) rankClass = 'rank-3';
+
+        return `
+          <tr>
+            <td class="rank-cell"><span class="rank-badge ${rankClass}">${rank}</span></td>
+            <td><strong>${escapeHtml(item.name)}</strong></td>
+            <td>${escapeHtml(item.level)}</td>
+            <td>${item.observations}</td>
+            <td>${item.species}</td>
+            <td>${item.activeStudents}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    if (tableHead) tableHead.innerHTML = headerHtml;
+    tableBody.innerHTML = html || `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">No entries found matching filter.</td></tr>`;
+  }
+
+  if (tabInd) {
+    tabInd.addEventListener('click', () => {
+      currentTab = 'ind';
+      tabInd.className = 'btn btn-primary';
+      tabSchool.className = 'btn btn-secondary';
+      render();
+    });
+  }
+
+  if (tabSchool) {
+    tabSchool.addEventListener('click', () => {
+      currentTab = 'school';
+      tabInd.className = 'btn btn-secondary';
+      tabSchool.className = 'btn btn-primary';
+      render();
+    });
+  }
+
+  if (filterLevel) {
+    filterLevel.addEventListener('change', (e) => {
+      currentFilter = e.target.value;
+      render();
+    });
+  }
+
+  // Initial render
+  render();
+}
+
+function initPilotBanner() {
+  // Check if user has already closed the banner in this session
+  if (sessionStorage.getItem('pilot-banner-closed')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'pilot-banner';
+  banner.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 360px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    transform: translateY(120%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  `;
+
+  banner.innerHTML = `
+    <button id="close-pilot-banner" style="
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 4px;
+    " aria-label="Close Announcement">&times;</button>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="font-size: 1.25rem;">📣</span>
+      <strong style="color: var(--text-primary); font-size: 1rem; font-family: var(--font-heading);">Join the BHOF Pilot!</strong>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+      We are currently inviting educators and schools to help us pilot the Biodiversity Hall of Fame.
+    </p>
+    <a href="https://forms.gle/eRdYrgSZrgbA9EML6" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="
+      font-size: 0.85rem;
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      margin-top: 0.25rem;
+    ">Express Interest</a>
+  `;
+
+  document.body.appendChild(banner);
+
+  // Animate in after a short delay
+  setTimeout(() => {
+    banner.style.transform = 'translateY(0)';
+    banner.style.opacity = '1';
+  }, 1000);
+
+  // Close event listener
+  const closeBtn = document.getElementById('close-pilot-banner');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      banner.style.transform = 'translateY(120%)';
+      banner.style.opacity = '0';
+      sessionStorage.setItem('pilot-banner-closed', 'true');
+      setTimeout(() => {
+        banner.remove();
+      }, 400);
+    });
+  }
+
+  // Mobile responsiveness adjustments via CSS style injection
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (max-width: 480px) {
+      #pilot-banner {
+        bottom: 16px !important;
+        right: 16px !important;
+        left: 16px !important;
+        max-width: calc(100% - 32px) !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 }

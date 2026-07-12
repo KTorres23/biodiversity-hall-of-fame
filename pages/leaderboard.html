@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboards - Biodiversity Hall of Fame (BHOF)</title>
+  <meta name="description" content="View the top-performing students and schools in the Biodiversity Hall of Fame network.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/bhof_logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <!-- Custom CSS for Leaderboard Tables & Toggles -->
+  <style>
+    .leaderboard-toggle-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .table-container {
+      background: var(--bg-primary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      overflow-x: auto;
+      margin: 2rem auto;
+      max-width: 1000px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    
+    th, td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    th {
+      background-color: var(--bg-secondary);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background-color: var(--bg-secondary);
+    }
+    
+    .rank-cell {
+      font-weight: 700;
+      width: 60px;
+    }
+    
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.85rem;
+    }
+    
+    .rank-1 {
+      background-color: var(--color-accent);
+      color: #000;
+    }
+    
+    .rank-2 {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+    
+    .rank-3 {
+      background-color: #cd7f32;
+      color: #fff;
+    }
+    
+    .badge-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    
+    .badge-gold {
+      background-color: var(--color-accent-light);
+      color: #b58100;
+    }
+    
+    .badge-silver {
+      background-color: var(--bg-tertiary);
+      color: var(--text-secondary);
+    }
+    
+    .badge-bronze {
+      background-color: #fbe9e7;
+      color: #d84315;
+    }
+    
+    .badge-active {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Header / Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="logo-wrapper">
+          <img src="../assets/bhof_logo.png" alt="BHOF Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <span>Biodiversity Hall of Fame</span>
+      </a>
+      
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="nav-menu">
+        <a href="../index.html">About BHOFs</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="criteria.html">Induction Criteria</a>
+        <a href="resources.html">Resources</a>
+        <a href="bioblitz.html">Bioblitzes</a>
+        <a href="leaderboard.html" class="active">Leaderboards</a>
+        <a href="contributors.html">Contributors</a>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px;">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section Header -->
+    <section style="padding-bottom: 2rem; background: radial-gradient(circle at top right, var(--color-primary-light), transparent 50%);">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2>BHOF Network Leaderboards</h2>
+        <p>Discover the top observers and leading institutions documenting our ecoregional biodiversity.</p>
+      </div>
+    </section>
+
+    <!-- Leaderboard Interface -->
+    <section style="padding-top: 0; padding-bottom: 5rem;">
+      <div style="max-width: 1000px; margin: 0 auto; padding: 0 1.5rem;">
+        
+        <!-- Pilot Disclaimer Callout -->
+        <div style="background-color: var(--color-accent-light); border: 1px dashed var(--color-accent); border-radius: var(--border-radius-md); padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem; margin-top: 2rem; margin-bottom: 1.5rem;">
+          <span style="font-size: 1.3rem;">⚠️</span>
+          <div>
+            <strong style="color: var(--text-primary); font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">Pilot Phase Notice</strong>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+              This leaderboard currently displays placeholder data. The Biodiversity Hall of Fame has not officially piloted yet, and live rankings will populate once student inductions begin.
+            </p>
+          </div>
+        </div>
+
+        <!-- Toggle Tabs -->
+        <div class="leaderboard-toggle-container">
+          <button id="tab-leaderboard-ind" class="btn btn-primary">Individual Observers</button>
+          <button id="tab-leaderboard-school" class="btn btn-secondary">School Leaderboard</button>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; align-items: center; max-width: 1000px; margin: 0 auto 1rem;">
+          <label for="filter-level" style="font-weight: 600; font-size: 0.9rem; color: var(--text-secondary);">Filter Level:</label>
+          <select id="filter-level" style="padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--color-border); background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); outline: none;">
+            <option value="all">All Levels</option>
+            <option value="High School">High School Only</option>
+            <option value="University">University Only</option>
+          </select>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="table-container">
+          <table id="leaderboard-table">
+            <thead>
+              <!-- Headers dynamically loaded depending on selected tab -->
+            </thead>
+            <tbody id="leaderboard-body">
+              <!-- Content loaded via app.js -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer / Collaboration -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h2>Let's Collaborate</h2>
+        <p id="contact-text">Loading contact information...</p>
+        <a id="contact-mail" href="#" class="btn btn-primary">Contact Collaboration Team</a>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Biodiversity Hall of Fame. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <img src="../assets/inat_logo_icon.png" alt="iNaturalist Logo" style="width: 18px; height: 18px; object-fit: contain;">
+            <span>iNaturalist</span>
+          </a>
+          <a href="../index.html">About</a>
+          <a href="resources.html">Resources</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/content.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

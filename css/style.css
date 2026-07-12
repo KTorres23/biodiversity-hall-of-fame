@@ -12,11 +12,11 @@
   --bg-secondary: #f3f7f4;
   --bg-tertiary: #e7efe9;
   --bg-glass: rgba(255, 255, 255, 0.75);
-  
+
   --text-primary: #15251d;
   --text-secondary: #4a5c53;
   --text-muted: #72847a;
-  
+
   --color-primary: #2e7d32;
   --color-primary-rgb: 46, 125, 50;
   --color-primary-light: #e8f5e9;
@@ -24,7 +24,7 @@
   --color-accent: #ffb300;
   --color-accent-light: #fff8e1;
   --color-border: #dae3dd;
-  
+
   --shadow-sm: 0 2px 4px rgba(46, 125, 50, 0.04);
   --shadow-md: 0 8px 16px rgba(46, 125, 50, 0.06);
   --shadow-lg: 0 16px 32px rgba(46, 125, 50, 0.08);
@@ -34,7 +34,7 @@
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
   --border-radius-full: 9999px;
-  
+
   --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -44,11 +44,11 @@
   --bg-secondary: #121c18;
   --bg-tertiary: #192721;
   --bg-glass: rgba(18, 28, 24, 0.8);
-  
+
   --text-primary: #eef5f1;
   --text-secondary: #b5c7bd;
   --text-muted: #84968c;
-  
+
   --color-primary: #66bb6a;
   --color-primary-rgb: 102, 187, 106;
   --color-primary-light: rgba(102, 187, 106, 0.15);
@@ -56,7 +56,7 @@
   --color-accent: #ffca28;
   --color-accent-light: rgba(255, 202, 40, 0.15);
   --color-border: #24352d;
-  
+
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
@@ -174,7 +174,7 @@ nav a.active {
   padding: 7rem 2rem 5rem;
   text-align: center;
   background: radial-gradient(circle at top right, var(--color-primary-light), transparent 50%),
-              radial-gradient(circle at bottom left, var(--color-accent-light), transparent 50%);
+    radial-gradient(circle at bottom left, var(--color-accent-light), transparent 50%);
   position: relative;
 }
 
@@ -326,6 +326,17 @@ section {
   flex-grow: 1;
 }
 
+.card a:not(.btn):not(.card-link) {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.card a:not(.btn):not(.card-link):hover {
+  color: var(--color-secondary);
+}
+
 /* Resource specific card overrides */
 .resource-tag {
   display: inline-block;
@@ -423,7 +434,7 @@ section {
 }
 
 .benefits-list li::before {
-  content: '✓';
+  content: '★';
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -655,4 +666,3 @@ footer {
     padding: 1.75rem 1.25rem;
   }
 }
-
